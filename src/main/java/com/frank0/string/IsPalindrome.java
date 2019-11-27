@@ -30,10 +30,11 @@ public class IsPalindrome {
          * 可以采用什么算法？
          */
         //去掉
-        System.out.println(isPalindrome("adfsf"));
-        System.out.println(isPalindrome("ababa"));
-        System.out.println(isPalindrome("ababa1"));
-        System.out.println(isPalindrome("1abba1"));
+//        System.out.println(isPalindrome("adfsf"));
+//        System.out.println(isPalindrome("ababa"));
+//        System.out.println(isPalindrome("ababa1"));
+//        System.out.println(isPalindrome("1abba1"));
+        System.out.println(isPalindrome("a"));
     }
 
     /**

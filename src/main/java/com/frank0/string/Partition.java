@@ -1,6 +1,7 @@
 package com.frank0.string;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -33,13 +34,45 @@ public class Partition {
          * 2.感觉像回溯法
          */
 
+        List<List<String>> result = partition("addddsbsab");
+
+        for (List<String> item : result) {
+            StringBuilder stringBuilder = new StringBuilder();
+            for (String s : item) {
+                stringBuilder.append(s).append(",");
+            }
+            System.out.println(stringBuilder.toString());
+        }
+
     }
 
     public static List<List<String>> partition(String s) {
+
         if (s.length()==0){
             return new ArrayList<>();
         }
+        List<List<String>> result = new ArrayList<List<String>>();
+        List<String> stringList = new ArrayList<>();
+        splitPartition(0,s,stringList,result);
+        return result;
+    }
 
-        return new ArrayList<>();
+    private static void splitPartition(int startIndex, String s,List<String> stringList,List<List<String>> result) {
+        if (startIndex == s.length()){
+            //以startIndex为开始index的后续字符串遍历完毕
+            List<String> p = new ArrayList<String>(stringList);
+            result.add(p);
+            return ;
+        }
+        for(int i = startIndex ;i<s.length();i++){
+            //从第i个字符开始分割
+            String testString = s.substring(startIndex, i + 1);
+            if (IsPalindrome.isPalindrome(testString)){
+                stringList.add(testString);
+                splitPartition(i+1,s,stringList,result);
+                //为什么要删掉？因为result.add已经p 已经删掉了便于下次从头开始
+                stringList.remove(stringList.size()-1);
+            }
+        }
     }
 }
